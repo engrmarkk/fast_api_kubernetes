@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-api
+  namespace: wallet-namespace
 spec:
   replicas: 2
   selector:
@@ -17,6 +18,8 @@ spec:
         image: engrmarkk/fastapi_kubernetes_api:1.0
         ports:
         - containerPort: 8000
-        env:
-        
-        
+        envFrom:
+        - configMapRef:
+            name: my-configmap
+        - secretRef:
+            name: my-secret
