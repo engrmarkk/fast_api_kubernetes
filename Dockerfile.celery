@@ -1,0 +1,28 @@
+FROM python:3.8-alpine
+
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+WORKDIR /app
+
+# Install build dependencies
+RUN apk update && \
+    apk add --no-cache gcc musl-dev libffi-dev pango pango-dev \
+    cairo cairo-dev gdk-pixbuf gdk-pixbuf-dev ttf-dejavu fontconfig harfbuzz harfbuzz-dev
+
+# Install system dependencies for WeasyPrint
+RUN apk add --no-cache libstdc++ libx11 glib
+
+# Cleanup
+RUN rm -rf /var/cache/apk/*
+
+# Install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the application code
+COPY . .
+
+# Run the application celery
+CMD ["celery", "-A", "celery_config.utils.cel_workers.celery", "worker", "--loglevel=info", "--concurrency=4", "--autoscale=4,2", "-E", "-B"]
