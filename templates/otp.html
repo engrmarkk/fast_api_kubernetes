@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
+    <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin: 40px auto;">
+        <!-- Header -->
+        <tr>
+            <td align="center" style="padding: 20px 0; background-color: #6c5ce7; border-radius: 10px 10px 0 0;">
+                <h1 style="color: #ffffff; font-size: 28px; margin: 0;">OTP Verification</h1>
+            </td>
+        </tr>
+        <!-- Content -->
+        <tr>
+            <td style="padding: 40px 30px;">
+                <p style="font-size: 18px; color: #333333; margin: 0 0 20px;">Hello {{name}},</p>
+                <p style="font-size: 16px; color: #555555; margin: 0 0 30px;">Your One-Time Password (OTP) for verification is:</p>
+                <div style="background-color: #f1f1f1; padding: 20px; text-align: center; border-radius: 8px; margin-bottom: 30px;">
+                    <span style="font-size: 32px; font-weight: bold; color: #6c5ce7; letter-spacing: 5px;">{{otp}}</span>
+                </div>
+                <p style="font-size: 14px; color: #777777; margin: 0;">This OTP is valid for <strong>10 minutes</strong>. Do not share it with anyone.</p>
+            </td>
+        </tr>
+        <!-- Footer -->
+        <tr>
+            <td align="center" style="padding: 20px; background-color: #f8f9fa; border-radius: 0 0 10px 10px;">
+                <p style="font-size: 14px; color: #999999; margin: 0;">If you didn't request this OTP, please ignore this email.</p>
+                <p style="font-size: 14px; color: #999999; margin: 10px 0 0;">&copy; 2024. All rights reserved.</p>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
