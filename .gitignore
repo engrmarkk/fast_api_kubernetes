@@ -180,3 +180,7 @@ migrations
 *.pyc
 *.db
 *.db-journal
+
+# k8
+configmap.yaml
+secret.yaml
