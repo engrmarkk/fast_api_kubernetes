@@ -1,0 +1,57 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: fast_api
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+      - db
+    # restart: always
+    networks:
+      - my_network  # Ensure it uses my_network
+
+  celery:
+    build:
+      context: .
+      dockerfile: Dockerfile.celery
+    container_name: fast_celery
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+      - api
+      - db
+    # restart: always
+    networks:
+      - my_network  # Add my_network here
+
+  redis:
+    image: redis:alpine
+    container_name: fast_redis
+    ports:
+      - 6380:6379
+    volumes:
+      - /var/lib/redis:/data
+    networks:
+      - my_network  # Add my_network here
+
+  db:
+    image: postgres:14-alpine
+    container_name: fast_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: fast_wallet  # Ensure the correct database is set
+    ports:
+      - 5432:5432
+    networks:
+      - my_network  # Ensure it's in my_network
+
+networks:
+  my_network:
+    driver: bridge
