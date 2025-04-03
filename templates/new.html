@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #F4F4F4; margin: 0; padding: 20px;">
+    <div style="max-width: 600px; background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 5px; margin: auto;">
+        <div style="background: linear-gradient(to right, #404784, #00A550); color: white; text-align: center; padding: 20px; font-size: 28px; font-weight: bold; border-radius: 10px 10px 0 0;">
+            Deposit Receipt
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+            <img src="https://res.cloudinary.com/duwyopabr/image/upload/v1740495305/easytra_y8lrcp.png" alt="Company Logo" style="max-width: 80%; height: auto; border-radius: 10px;">
+        </div>
+        <div style="padding: 20px; font-size: 16px; color: #333;">
+            <p style="line-height: 1.6;">Dear <strong>{user.first_name}</strong>,</p>
+            <p style="line-height: 1.6;">Thank you for your recent deposit! Below are the details of your transaction:</p>
+            <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                <tr>
+                    <th style="border: 1px solid #ddd; padding: 10px; text-align: left; background: linear-gradient(to right, #404784, #00A550); color: white;">Detail</th>
+                    <th style="border: 1px solid #ddd; padding: 10px; text-align: left; background: linear-gradient(to right, #404784, #00A550); color: white;">Information</th>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 10px; text-align: left;">Deposit ID</td>
+                    <td style="border: 1px solid #ddd; padding: 10px; text-align: left;"><strong>{transaction_id}</strong></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 10px; text-align: left;">Amount Deposited</td>
+                    <td style="border: 1px solid #ddd; padding: 10px; text-align: left;">₦{request.amount:,.2f}</td>
+                </tr>
+                <tr style="background-color: #E7F3FE;">
+                    <td style="border: 1px solid #ddd; padding: 10px; text-align: left;">New Wallet Balance</td>
+                    <td style="border: 1px solid #ddd; padding: 10px; text-align: left;">₦{user.wallet_balance:,.2f}</td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 10px; text-align: left;">Book Balance</td>
+                    <td style="border: 1px solid #ddd; padding: 10px; text-align: left;">₦{user.book_balance:,.2f}</td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 10px; text-align: left;">Transaction Date</td>
+                    <td style="border: 1px solid #ddd; padding: 10px; text-align: left;">{transaction_date}</td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 10px; text-align: left;">Payment Method</td>
+                    <td style="border: 1px solid #ddd; padding: 10px; text-align: left;">{payment_method}</td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 10px; text-align: left;">Status</td>
+                    <td style="border: 1px solid #ddd; padding: 10px; text-align: left;"><strong>Completed</strong></td>
+                </tr>
+            </table>
+            <p style="line-height: 1.6;">If you have any questions or concerns regarding this transaction, please do not hesitate to reach out to our support team at <a href="mailto:support@finvault.com" style="color: #007BFF;">support@finvault.com</a>.</p>
+            <p style="line-height: 1.6;">Thank you for choosing FinVault!</p>
+        </div>
+        <div style="text-align: center; padding: 10px; font-size: 14px; color: #666;">
+            &copy; {datetime.utcnow().year} FinVault | All rights reserved.<br>
+            <a href="https://www.finvault.com/terms" target="_blank" style="color: #007BFF;">Terms of Service</a> | <a href="https://www.finvault.com/privacy" target="_blank" style="color: #007BFF;">Privacy Policy</a>
+        </div>
+    </div>
+</body>
+</html>
