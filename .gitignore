@@ -173,3 +173,10 @@ cython_debug/
 .DS_Store/
 wallet.db
 run_script.sh
+
+migrations/
+migrations
+
+*.pyc
+*.db
+*.db-journal
