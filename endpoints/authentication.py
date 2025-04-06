@@ -188,11 +188,6 @@ async def get_token(
                 status_code=status.HTTP_401_UNAUTHORIZED, detail="Email not verified"
             )
 
-        # if not user_has_userdata(db, user.id):
-        #     return NoUserDataHTTPException(
-        #         detail="User data not found", complete_registration=False
-        #     )
-
         access_token = create_access_token(data={"sub": user.id})
         return {"access_token": access_token, "token_type": "bearer"}
     except HTTPException as http_exc:
