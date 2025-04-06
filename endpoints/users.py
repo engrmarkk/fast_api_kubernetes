@@ -113,11 +113,10 @@ async def change_password(
         return {"detail": "Password changed"}
     except HTTPException as http_exc:
         # Log the HTTPException if needed
-        logger.exception("traceback from change password")
+        logger.exception("error from change password")
         raise http_exc
     except Exception as e:
-        logger.exception("traceback from change password")
-        logger.error(f"{e} : error from change password")
+        logger.exception("error from change password")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Network Error"
         )
